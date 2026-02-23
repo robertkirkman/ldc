@@ -25,7 +25,7 @@ jobs:
         include:
 
           - job_name: Linux x86_64 multilib
-            os: ubuntu-22.04
+            os: ubuntu-24.04
             arch: x86_64
             # To improve portability of the generated binaries, link the C++ standard library statically.
             extra_cmake_flags: >-
@@ -39,7 +39,7 @@ jobs:
             with_pgo: true
 
           - job_name: Linux aarch64
-            os: ubuntu-22.04-arm
+            os: ubuntu-24.04-arm
             arch: aarch64
             extra_cmake_flags: >-
               -DCMAKE_C_COMPILER=clang
@@ -195,7 +195,7 @@ jobs:
           llvm_version: ${{ matrix.llvm_version || env.LLVM_VERSION }}
           arch: ${{ matrix.arch }}
       - name: 'Ubuntu 22: Build recent gdb from source' # see https://github.com/ldc-developers/ldc/issues/4389
-        if: startsWith(matrix.os, 'ubuntu-22.04')
+        if: startsWith(matrix.os, 'ubuntu-24.04')
         uses: ./.github/actions/helper-build-gdb
         with:
           arch: ${{ matrix.arch }}
@@ -283,7 +283,7 @@ jobs:
         include:
 
           - job_name: Android armv7a
-            host_os: ubuntu-22.04
+            host_os: ubuntu-24.04
             os: android
             arch: armv7a
             android_x86_arch: i686
@@ -291,7 +291,7 @@ jobs:
               -DLDC_INSTALL_LLVM_RUNTIME_LIBS_ARCH=arm-android
 
           - job_name: Android aarch64
-            host_os: ubuntu-22.04
+            host_os: ubuntu-24.04
             os: android
             arch: aarch64
             android_x86_arch: x86_64
